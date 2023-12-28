@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://djk6la56sahm4"]
+
+[ext_resource type="Script" path="res://main_game.gd" id="1_ugf40"]
+[ext_resource type="PackedScene" uid="uid://cgyqapskqkbww" path="res://Circle.tscn" id="2_ese5x"]
+[ext_resource type="PackedScene" uid="uid://bs05wy6v0hpau" path="res://GameBoard.tscn" id="2_tbpa0"]
+[ext_resource type="PackedScene" uid="uid://b00eqxyctm7nx" path="res://cross.tscn" id="3_0hx0g"]
+[ext_resource type="PackedScene" uid="uid://cwg56s24w7awv" path="res://game_over_screen.tscn" id="5_2tyha"]
+
+[node name="MainGame" type="Node"]
+script = ExtResource("1_ugf40")
+circle_scene = ExtResource("2_ese5x")
+cross_scene = ExtResource("3_0hx0g")
+
+[node name="GameBoard" parent="." instance=ExtResource("2_tbpa0")]
+position = Vector2(200, 200)
+
+[node name="GameOverScreen" parent="." instance=ExtResource("5_2tyha")]
+process_mode = 2
+
+[connection signal="restart" from="GameOverScreen" to="." method="_on_game_over_screen_restart"]
